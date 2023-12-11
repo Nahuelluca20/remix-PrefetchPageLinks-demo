@@ -6,7 +6,6 @@ export const loader: LoaderFunction = async () => {
   const fetchData = await fetch("https://rickandmortyapi.com/api/character/2");
   const response = await fetchData.json();
   const data = response;
-  // return data;
 
   // let headers = { "Cache-Control": "public, max-age=60" };
   return json(data, {

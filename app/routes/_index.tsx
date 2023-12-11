@@ -8,14 +8,15 @@ export const meta: MetaFunction = () => {
     { title: "PrefetchPageLinks + Cache" },
     {
       name: "description",
-      content: "Use PrefetchPageLinks and cache the data ",
+      content:
+        "Use PrefetchPageLinks and cache the data with Rick and Mory API",
     },
   ];
 };
 
 export default function Index() {
   let fetcher = useFetcher<typeof resourceLoader>();
-  console.log(fetcher.data);
+
   return (
     <>
       <PrefetchPageLinks page="/resource" />
