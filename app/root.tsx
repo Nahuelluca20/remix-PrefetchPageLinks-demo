@@ -25,7 +25,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="justify-center bg-zinc-900 max-w-[1240px] mx-auto min-h-screen flex items-center">
         <Outlet />
         <ScrollRestoration />
         <Scripts />

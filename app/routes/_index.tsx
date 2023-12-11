@@ -1,7 +1,7 @@
 import { PrefetchPageLinks, useFetcher } from "@remix-run/react";
 import type { MetaFunction } from "@remix-run/node";
 import type { loader as resourceLoader } from "./resource";
-import type { Character } from "~/types/character";
+import DisplayData from "~/components/display-data";
 
 export const meta: MetaFunction = () => {
   return [
@@ -18,28 +18,16 @@ export default function Index() {
   let fetcher = useFetcher<typeof resourceLoader>();
 
   return (
-    <>
+    <main className="space-y-10 text-center">
       <PrefetchPageLinks page="/resource" />
-      <button type="button" onClick={() => fetcher.load("/resource")}>
+      <button
+        className="bg-blue-500 text-white text-xl font-semibold rounded-md py-2 px-4"
+        type="button"
+        onClick={() => fetcher.load("/resource")}
+      >
         Get Morty data
       </button>
       {fetcher.data && <DisplayData data={fetcher.data} />}
-    </>
-  );
-}
-
-function DisplayData({ data }: { data: Character }) {
-  return (
-    <div>
-      <img
-        src={data.image}
-        alt={data.name + " " + data.species}
-        width={200}
-        height={200}
-      />
-      <p>{data.name}</p>
-      <p>{data.species}</p>
-      <p>{data.status}</p>
-    </div>
+    </main>
   );
 }
